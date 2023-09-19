@@ -1,4 +1,11 @@
-﻿using System.Text.RegularExpressions; 
+﻿/**********************************************
+ * The purpose of this code file is to take in
+ * a given input string which is separated by a
+ * delimiter value.  To remove all non-numeric
+ * characters through parsing, and to output
+ * a new delimiter separated string of int values
+ **********************************************/
+using System.Text.RegularExpressions; 
 
 namespace ArrayParsingApp 
 {
