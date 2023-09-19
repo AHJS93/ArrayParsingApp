@@ -1,32 +1,50 @@
-﻿using System.Text.RegularExpressions; /*Declaring use of Regular Expressions to match characters in the inputString*/
+﻿using System.Text.RegularExpressions; 
 
-namespace ArrayParsingApp /*Declaring the namespace*/
+namespace ArrayParsingApp 
 {
-    class Program /*Declaring the class*/
+    class Program 
     {
-        static void Main(string[] args) /*setting the entry point*/
+        static void Main(string[] args) 
         {
-            string loopAgain = null; /*declaring a variable to hold the user's decision to repeat the loop and setting = to null for now*/
+            string loopAgain = string.Empty; /*Storing the do while loop condition*/
 
-            do /*Initializing do-while loop*/
+            /****************************************************
+             * Initialize do while loop which contains our code
+             ****************************************************/
+            do
             {
-                Console.WriteLine("----------------"); /*clear line separation for user*/
-                Console.WriteLine("Enter string to parse: "); /*Asking the user to input their string for parsing*/
-                string inputString = Console.ReadLine(); /*storing the users input into an object called inputString*/
-                Console.WriteLine("Enter delimiter value: "); /*Asking the user to input their delimiter value*/
-                string delimitVal = Console.ReadLine(); /*Storing the users delimiter value in the object delimitVal*/
+                /******************************************************
+                 * Gathering user input string and delimiter value
+                 ******************************************************/
+                Console.WriteLine("----------------"); 
+                Console.WriteLine("Enter string to parse: "); 
+                string inputString = Console.ReadLine(); 
+                Console.WriteLine("Enter delimiter value: "); 
+                string delimitVal = Console.ReadLine(); 
 
-                string[] delimitedString = Regex.Split(inputString, delimitVal); /*creating an array of substrings which constists of the values created when using the Regex Split method to split the inputString text at each delimiter value that the user has chosen*/
+                /*********************************************
+                 * Implementing the use of Regular Expressions
+                 * to split the string at the delimiter value
+                 * and to further replace non-numeric characters
+                 * with empty characters
+                 *********************************************/
+                string[] delimitedString = Regex.Split(inputString, delimitVal); 
 
-                string newString = Regex.Replace(inputString, @"[^0-9,]", ""); /*creating a new string which uses the Regex Replace method to take the inputString and replace all non-numeric characters with "" no character and preserves the numeric values 0-9 as well as the comma , */
+                string newString = Regex.Replace(inputString, @"[^0-9,]", ""); 
 
-                Console.WriteLine(newString); /*displaying the newString*/
-                Console.WriteLine("-------------------"); /*line separation for user*/
-                Console.WriteLine("Parse again?: [Y/y]"); /*Asking the user if they would like to parse again*/
-                Console.WriteLine("-------------------"); /*line separation for user*/
-                loopAgain = Console.ReadLine().ToUpper(); /*setting the loopAgain string = to the users input, converted to uppercase to decrease error, on ln25*/
+                /******************************************
+                 * Printing the output string and then
+                 * asking the user if they would like to
+                 * parse another string and updating the
+                 * loop condition variable
+                 ******************************************/
+                Console.WriteLine(newString); 
+                Console.WriteLine("-------------------"); 
+                Console.WriteLine("Parse again?: [Y/y]"); 
+                Console.WriteLine("-------------------"); 
+                loopAgain = Console.ReadLine().ToUpper(); 
 
-            } while (loopAgain == "Y"); /*closing the do-while loop to continue if the loopAgain string is == to "Y"*/
+            } while (loopAgain == "Y"); 
         }
     }
 }
